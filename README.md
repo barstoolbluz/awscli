@@ -22,7 +22,7 @@ The environment packs these essential tools:
 - `bat` - Better `cat` with syntax highlighting
 - `curl` - Solid HTTP client for API testing
 - `openssl` - Cryptography toolkit backing the security layer
-- `pip` - Python package manager for AWS extensions
+- `jq` - Pretty JSON parser
 
 ## 🏁 Getting Started
 

@@ -782,7 +782,10 @@ if [[ -f "${FLOX_ENV_CACHE:-$HOME/.cache/flox}/aws_config" ]]; then
 fi
 
 readme() {
-  [ -s "$FLOX_ENV_PROJECT/README.md" ] || curl -sL "https://raw.githubusercontent.com/barstoolbluz/awscli/main/README.md" > "$FLOX_ENV_PROJECT/README.md" 2>/dev/null
+  if [[ "$1" == "--refresh" ]] || [ ! -s "$FLOX_ENV_PROJECT/README.md" ]; then
+    curl -sL "https://raw.githubusercontent.com/barstoolbluz/awscli/master/README.md" > "$FLOX_ENV_PROJECT/README.md" 2>/dev/null
+    echo "README updated from GitHub."
+  fi
   bat --language markdown "$FLOX_ENV_PROJECT/README.md" 2>/dev/null
 }
 '''
@@ -796,7 +799,10 @@ if [[ -f "${FLOX_ENV_CACHE:-$HOME/.cache/flox}/aws_config" ]]; then
 fi
 
 readme() {
-  [ -s "$FLOX_ENV_PROJECT/README.md" ] || curl -sL "https://raw.githubusercontent.com/barstoolbluz/awscli/main/README.md" > "$FLOX_ENV_PROJECT/README.md" 2>/dev/null
+  if [[ "$1" == "--refresh" ]] || [ ! -s "$FLOX_ENV_PROJECT/README.md" ]; then
+    curl -sL "https://raw.githubusercontent.com/barstoolbluz/awscli/master/README.md" > "$FLOX_ENV_PROJECT/README.md" 2>/dev/null
+    echo "README updated from GitHub."
+  fi
   bat --language markdown "$FLOX_ENV_PROJECT/README.md" 2>/dev/null
 }
 '''
@@ -810,7 +816,10 @@ if test -f "${FLOX_ENV_CACHE:-$HOME/.cache/flox}/aws_config"
 end
 
 function readme
-  test -s "$FLOX_ENV_PROJECT/README.md" || curl -sL "https://raw.githubusercontent.com/barstoolbluz/awscli/main/README.md" > "$FLOX_ENV_PROJECT/README.md" 2>/dev/null
+  if test "$argv[1]" = "--refresh"; or test ! -s "$FLOX_ENV_PROJECT/README.md"
+    curl -sL "https://raw.githubusercontent.com/barstoolbluz/awscli/master/README.md" > "$FLOX_ENV_PROJECT/README.md" 2>/dev/null
+    echo "README updated from GitHub."
+  end
   bat --language markdown "$FLOX_ENV_PROJECT/README.md" 2>/dev/null
 end
 '''

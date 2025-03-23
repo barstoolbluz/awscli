@@ -63,7 +63,7 @@ First-time activation triggers a wizard that:
 
 ## 📝 Usage
 
-After setup, you directly run AWS CLI commands:
+After setup, you can directly run AWS CLI commands:
 
 ```bash
 # List S3 buckets
